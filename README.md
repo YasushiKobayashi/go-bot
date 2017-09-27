@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/YasushiKobayashi/go-bot.svg?style=svg)](https://circleci.com/gh/YasushiKobayashi/go-bot)
 
 ### aboout
 - slack notice by slack webhook
