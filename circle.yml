@@ -1,0 +1,27 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  node:
+    version: 8.1.0
+  services:
+    - mysql
+  environment:
+    GOPATH: $HOME/$CIRCLE_PROJECT_REPONAME
+    PATH: $PATH:$GOPATH/bin
+    GO15VENDOREXPERIMENT: 1
+
+dependencies:
+  pre:
+    # - bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+    # - source ~/.gvm/scripts/gvm
+    # - gvm list
+    # - gvm install go1.8.1
+    - curl https://glide.sh/get | sh
+
+
+test:
+  override:
+    - cd src/app && glide install
+    - cd src/app && go test -bench $(glide novendor)
+    - cd src/app && go build main.go
+    - cd src/app && ./main &

@@ -1,0 +1,18 @@
+version: '2'
+services:
+  app:
+    container_name: bot
+    # image: ptpadan1246/go-glide-docker
+    build: .
+    expose:
+      - "7000"
+    ports:
+      - 7000:7000
+    environment:
+      BOT_ENV: production
+    volumes:
+      # - "./src/app:/go/src/app"
+      - "./src/app/log:/go/src/app/log"
+      - "./src/app/static:/go/src/app/static"
+    working_dir: /go/src/app
+    command: ./main &
