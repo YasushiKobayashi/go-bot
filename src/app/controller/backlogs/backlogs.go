@@ -37,6 +37,7 @@ func slackSetting(channel string, text string) (res handler.Slack) {
 	res = handler.Slack{
 		Channel:  channel,
 		Username: config.BACKLOG_SLACK_USERNAME,
+		IconUrl:  config.BACKLOG_SLACK_ICON,
 		Text:     text,
 	}
 	return res
